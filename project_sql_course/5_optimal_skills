@@ -1,0 +1,33 @@
+/*Cuales son las mejores habilidades a aprender? (alta demanda y alto pago)
+- identifica las habilidades altamente demandadas y asociadas con altos salarios promedios
+ para roles de data engineer
+ - Concentrate en posiciones remotas con salarios que esten especificados
+ - Por que? Habilidades especificas que ofrecen seguridad laboral (alta demanda) y beneficios financieros
+ (altos salarios), ofrecen informacion estrategica para desarrollo de la carrera de data engineer*/
+
+
+WITH skills_name AS (
+    SELECT
+        skill.skills,
+        jobs.job_id,
+        skill.skill_id
+    FROM skills_job_dim AS jobs
+    INNER JOIN skills_dim AS skill ON jobs.skill_id = skill.skill_id
+)
+SELECT
+    s.skills,
+    COUNT(s.skill_id) AS number_skills,
+    ROUND(AVG(jp.salary_year_avg)) AS avg_salary
+FROM skills_name AS s 
+INNER JOIN job_postings_fact AS jp ON s.job_id = jp.job_id
+WHERE
+    jp.job_title_short = 'Data Engineer' AND
+    jp.job_location = 'Anywhere' AND
+    jp.salary_year_avg IS NOT NULL
+GROUP BY
+    s.skills
+ORDER BY
+    number_skills DESC,
+    avg_salary DESC
+LIMIT 25;
+    
