@@ -1,0 +1,55 @@
+/*Pregunta: Cuales son los trabajos mejores pagados como Analista de Datos
+- Identifica los 10 trabajos como Analista de Datos mejores pagadas que trabajen de manera remota
+- Concentrate en publicaciones de trabajos con salarios especificos (Deshazte de valores nulos)
+- Por que? Destaca las principales oportunidades para Analistas de Datos, ofreciendo informacion */
+
+SELECT
+    job_id,
+    job_title,
+    job_location,
+    job_schedule_type,
+    salary_year_avg,
+    job_posted_date::date,
+    name
+FROM
+    job_postings_fact as jobs
+LEFT JOIN company_dim as companies ON
+    jobs.company_id = companies.company_id
+WHERE
+    job_title_short = 'Data Engineer' AND
+    salary_year_avg IS NOT NULL AND
+    job_location = 'Anywhere'
+ORDER BY
+    salary_year_avg DESC
+LIMIT 10;
+
+
+WITH skill AS (SELECT
+            COUNT(Skills.skills) number_skills,
+            Skills.skills
+        FROM
+            skills_job_dim AS job_skills
+        INNER JOIN skills_dim AS Skills ON
+            job_skills.skill_id = Skills.skill_id
+        LEFT JOIN job_postings_fact AS jobs ON
+            job_skills.job_id = jobs.job_id
+        GROUP BY
+             Skills.skills
+        ORDER BY
+            number_skills DESC )
+SELECT
+    COUNT(jobs.job_id) as every,
+    jobs.job_title_short,
+    
+        
+FROM
+    job_postings_fact as jobs
+LEFT JOIN company_dim as companies ON
+    jobs.company_id = companies.company_id
+WHERE
+    job_title_short = 'Data Engineer' AND
+    salary_year_avg IS NOT NULL AND
+    job_location = 'Anywhere'
+GROUP BY
+    jobs.job_title_short
+LIMI 100;
