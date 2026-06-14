@@ -58,7 +58,7 @@ Here's the breakdown of the top data engineer jobs in 2023:
 - **Diverse Employers:** Companies like Durlston Partners, Twicht, and Engtal are among those offering high salaries, showing a broad interest across different industries.
 - **Job Title Veriety:** There's a high diversity in job titles, from Data Engineer to Director of Engineering - Data Plarform, reflecting veries roles and specializations within data analytics.
 
-![Top Paying Roles](assets\top-10-paying-jobs-2023.jpg)*Bar graph visualizing the top 10 salaries for data engineers; Grok generated this graph from my SQL query results*
+![Top Paying Roles](assets/top-10-paying-jobs-2023.jpg)*Bar graph visualizing the top 10 salaries for data engineers; Grok generated this graph from my SQL query results*
 
 ### 2. Skills for Top Paying Jobs
 To understand what skills are required for the top-paying jobs, I joined the job postings with the skills data, providing insights into what employers value for high-compensation roles.
@@ -96,7 +96,7 @@ PySpark, Spark, Hadoop, and Kafka consistently appear in the top-paying roles. C
 - **Specialization Pays, but Core Skills Rule** While niche skills like Rust, Databricks, or ML frameworks (TensorFlow/PyTorch) appear in high-salary roles, the biggest trend is that core foundational skills (Python, Spark, SQL, Kafka, Kubernetes) deliver the most consistent high compensation across multiple companies and job levels.
 
 
-![Top Paying Skills](assets\top-paying-skills-2023.jpg)*Bar graph for the top paying skills for data engineers; Grok generated this graph from my SQL query results*
+![Top Paying Skills](assets/top-paying-skills-2023.jpg)*Bar graph for the top paying skills for data engineers; Grok generated this graph from my SQL query results*
 
 ### 3. In-Demand Skills for Data Engineer
 This query helped indentify the skills most frequently requested in job postings, directing focus to areas with high demand.
