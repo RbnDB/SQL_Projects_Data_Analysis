@@ -9,7 +9,7 @@ WITH top_paying AS (SELECT
     job_title,
     job_location,
     salary_year_avg,
-    name
+    name AS company_name
 FROM
     job_postings_fact as jobs
 LEFT JOIN company_dim as companies ON
@@ -27,7 +27,7 @@ INNER JOIN skills_job_dim AS js ON tp.job_id = js.job_id
 INNER JOIN skills_dim AS s ON js.skill_id = s.skill_id
 ORDER BY
     tp.salary_year_avg DESC
-LIMIT 10;
+LIMIT 100;
 
 /*[
   {

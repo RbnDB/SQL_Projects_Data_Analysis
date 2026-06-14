@@ -13,7 +13,7 @@ WITH skills_name AS (
 )
 SELECT
     s.skills,
-    ROUND(AVG(jp.salary_year_avg)) AS avg_salary
+    ROUND(AVG(jp.salary_year_avg),0) AS avg_salary
 FROM skills_name AS s 
 INNER JOIN job_postings_fact AS jp ON s.job_id = jp.job_id
 WHERE

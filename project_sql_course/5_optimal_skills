@@ -16,7 +16,7 @@ WITH skills_name AS (
 )
 SELECT
     s.skills,
-    COUNT(s.skill_id) AS number_skills,
+    COUNT(s.skill_id) AS demanded_skills,
     ROUND(AVG(jp.salary_year_avg)) AS avg_salary
 FROM skills_name AS s 
 INNER JOIN job_postings_fact AS jp ON s.job_id = jp.job_id
@@ -26,8 +26,10 @@ WHERE
     jp.salary_year_avg IS NOT NULL
 GROUP BY
     s.skills
+HAVING
+    COUNT(s.skill_id) > 10
 ORDER BY
-    number_skills DESC,
-    avg_salary DESC
+    avg_salary DESC,
+    demanded_skills DESC
 LIMIT 25;
     

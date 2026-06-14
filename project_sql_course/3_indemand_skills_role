@@ -8,15 +8,13 @@
 WITH number_jobs_skills AS (
     SELECT
         COUNT(jp.*) AS skill_count,
-        sj.skill_id,
-        ROUND(AVG(jp.salary_year_avg))  AS salary_skill
+        sj.skill_id
     FROM  
         skills_job_dim AS sj  
     INNER JOIN job_postings_fact AS jp ON sj.job_id = jp.job_id     
     WHERE
-       jp.job_location = 'Anywhere' AND
+        jp.job_location = 'Anywhere' AND
         jp.job_title_short = 'Data Engineer'
-       AND jp.salary_year_avg IS NOT NULL
     GROUP BY
         sj.skill_id
 )
@@ -24,10 +22,9 @@ WITH number_jobs_skills AS (
     SELECT 
     s.skill_id,
     s.skills,
-    skill_count,
-    salary_skill
+    skill_count
 FROM 
     number_jobs_skills AS n
 INNER JOIN skills_dim AS s ON n.skill_id = s.skill_id
 ORDER BY
-    skill_count DESC
+    skill_count DESC;
