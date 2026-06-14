@@ -1,4 +1,3 @@
-TODO: Update this file later
 ## Introduction
 A dive into the data job market! Focusing on data engineer roles, this project, in-demand skills,  and where high demand meets high salary in data analytics.
 
